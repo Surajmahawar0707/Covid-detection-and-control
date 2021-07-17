@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="">
+
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+li2 {
+  float: center;
+}
+
+
+li1 {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li2 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+li a:active {
+  color:black;
+    background-color: yellow;
+}
+
+li1 a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+</style>
+
+
+<ul>
+    <li><a class="active" href="{% url 'input_view' %}">Profile</a></li>
+    <li><a class="active" href="{% url 'contact_after_login' %}">Contact us</a></li>
+    <li><a class="active" href="{% url 'about_after_login' %}">About us</a></li>
+    <li><a style="background-color:yellow; color: black" class="active" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+    <li1><a class="active" href="{% url 'logout' %}">Logout</a></li1>
+</ul>
+
+<p>Hello! You are welcome, <b>{{user.username}}</b>. You can update your profile when you want.</p>
+
+<div style="margin-left:25% ; width:50%; border: 2px solid lightgray">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p style="margin-left:34%"><label for="picture">Picture: </label>
+        <input id="picture" type="file" name="picture"></p>
+        <p style="text-align:center"><label for="contact">Contact: </label>
+        <input id="contact" type="number" name="contact" required value={{user_inf.contact}}></p>
+        <p style="text-align:center"><label for="email">Email: </label>
+        <input id="email" type="text" name="email" required value={{user_inf.email}}></p>
+        <p style="text-align:center"><label for="address">Address: </label>
+        <input id="address" type="text" name="address" required value={{user_inf.address}}></p>
+        <p style="text-align:center"><label for="district">District: </label>
+        <input id="district" type="text" name="district" required value={{user_inf.district}}></p>
+        <p style="text-align:center"><label for="state">State: </label>
+        <input id="state" type="text" name="state" required value={{user_inf.state}}></p>
+        <p style="text-align:center"><label for="country">Country: </label>
+        <input id="country" type="text" name="country" required value={{user_inf.country}}></p>
+        <button style="padding:10px 10px 10px 10px; margin-left: 33%; width: 34%; border:none; background-color: yellowgreen; margin-top:20px; margin-bottom:20px" type="submit" value="Submit">Change Profile</button>
+        {% for message in messages %}
+            <p style="background-color: grey; width:50%; padding-top:10px; padding-bottom:5px; text-align:center; margin: 0 25%">{{ message }}</p>
+        {% endfor %}
+    </form>
+</div>
+
+<p style="padding:15px 17px; background-color:red; text-align:center; text-decoration:none"><a href = {% url 'del_acc' %}>Delete Account!</a></p>
+
+</html>

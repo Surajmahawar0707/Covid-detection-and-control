@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="">
+<title>Login Page</title>
+<style>
+
+    /* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+    padding-bottom: 40px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+
+.container {
+    padding:16px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+
+
+li1 {
+  float: right;
+}
+
+a.a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+
+
+a.a:hover {
+  color: black;
+  background-color: yellow;
+}
+
+
+</style>
+
+<ul>
+    <li><a  class="a" href="{% url 'home' %}">Home</a></li>
+    <li><a class="a" href="{% url 'contact' %}">Contact us</a></li>
+    <li><a class="a" href="{% url 'about' %}">About us</a></li>
+    <li1><a style="background-color:yellow; color: black" class="a" href="{% url 'login' %}">Login</a></li1>
+    <li1><a class="a" href="{% url 'register' %}">Register</a></li1>
+</ul>
+
+<body>
+
+<h1 style="float:left; margin-top:10%;margin-left:6%; width:40%">To Continue, Please Log in with your account username and password.</h1>
+
+
+<div style="float:right; margin-right:10%; margin-top:50px; text-align:center; width:30%; height:100px">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container" style="padding:16px">
+            <label for="uname"><b>Username</b>
+                <input type="text" placeholder="Enter Username" name="username" required>
+            </label>
+
+            <p></p>
+
+            <label for="psw"><b>Password</b>
+            <input type="password" placeholder="Enter Password" name="password1" required>
+            </label>
+
+            <p></p>
+
+            <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <p></p>
+
+            <button style="background-color:yellowgreen; padding:15px 45% 15px 45%; border: none" type="submit" value="Login">Login</button>
+
+            {% if message %}
+              <p style="background-color:yellowgreen ; padding-top:10px; padding-bottom:5px; width: 70%; margin-left:15%; text-align:center">{{message}}</p>
+            {% endif %}
+
+            <h3 style="float: left; margin-bottom: 10px"><a style="text-align: left" href={% url 'register' %}>Register</a></h3>
+            <h3 style="float: right">forgot <a style="text-align: right" href="forgot_password">password?</a></h3>
+
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

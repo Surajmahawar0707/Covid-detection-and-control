@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="">
+
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+
+li1 {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+li a:active {
+  color:black;
+    background-color: yellow;
+}
+
+li1 a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+</style>
+
+
+<ul>
+    <li><a style="background-color:yellow; color: black" class="active" href="{% url 'home' %}">Home</a></li>
+    <li><a class="active" href="{% url 'contact' %}">Contact us</a></li>
+    <li><a class="active" href="{% url 'about' %}">About us</a></li>
+    <li1><a class="active" href="{% url 'login' %}">Login</a></li1>
+    <li1><a class="active" href="{% url 'register' %}">Register</a></li1>
+</ul>
+
+
+
+</html>

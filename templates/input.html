@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="">
+
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+li2 {
+  float: center;
+}
+
+
+li1 {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li2 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+li a:active {
+  color:black;
+    background-color: yellow;
+}
+
+li1 a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+left{
+  float: left;
+}
+
+right{
+  float: right;
+}
+
+</style>
+
+
+<ul>
+    <li><a style="background-color:yellow; color: black" class="active" href="{% url 'input_view' %}">Profile</a></li>
+    <li><a class="active" href="{% url 'contact_after_login' %}">Contact us</a></li>
+    <li><a class="active" href="{% url 'about_after_login' %}">About us</a></li>
+    <li><a class="active" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+    <li1><a class="active" href="{% url 'logout' %}">Logout</a></li1>
+</ul>
+
+
+<p>Hello! You are welcome <b>{{user_inf.username}}</b>. Please fill following data.</p>
+
+<left style="margin-top:7px">
+<h1>Profile</h1>
+<div style = "border:2px solid lightgray; padding:0px 20px 0px 20px">
+<p style="float:center; text-align:center"><img src="{{user_inf.picture.url}}" class="img-circle" style="width:100px; height:100px; border-radius:50%"></p>
+<p>Username : {{user_inf.username}}</p>
+<p>Email : {{user_inf.email}}</p>
+<p>Contact : {{user_inf.contact}}</p>
+<p>Address : {{user_inf.address}}</p>
+<p>District : {{user_inf.district}}</p>
+<p>State : {{user_inf.state}}</p>
+<p>Country : {{user_inf.country}}</p>
+</div>
+</left>
+<right style="margin-right:10%">
+
+<h1 style="text-align:center">Fill healthcare details</h1>
+
+<div style="width:100%; margin-top: 30px; border: 2px solid lightgray">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p style="margin-left:14%"><label for="symptoms">Symptoms: </label>
+        <label for="None">None</label>
+        <input id="None" type="radio" name="symptoms" value="None" required></p>
+        <label style="margin-left:24%" for="Fever">Fever</label>
+        <input id="Fever" type="radio" name="symptoms" value="Fever" required></p>
+        <label style="margin-left:24%" for="Cough">Cough</label>
+        <input id="Cough" type="radio" name="symptoms" value="Cough" required></p>
+        <label style="margin-left:24%" for="Tiredness">Tiredness</label>
+        <input id="Tiredness" type="radio" name="symptoms" value="Tiredness" required></p>
+        <label style="margin-left:24%" for="Aches and pain">Aches and pain</label>
+        <input id="Aches and pain" type="radio" name="symptoms" value="Aches and pain" required></p>
+        <label style="margin-left:24%" for="Sore Throat">Sore Throat</label>
+        <input id="Sore Throat" type="radio" name="symptoms" value="Sore Throat" required></p>
+        <label style="margin-left:24%" for="Diarrhoea">Diarrhoea</label>
+        <input id="Diarrhoea" type="radio" name="symptoms" value="Diarrhoea" required></p>
+        <label style="margin-left:24%" for="Loss of taste or smell">Loss of taste or smell</label>
+        <input id="Loss of taste or smell" type="radio" name="symptoms" value="Loss of taste or smell" required></p>
+        <p style="color:red; margin-left:11.75%; margin-right:11.75%"><b>Since, bluetooth services are not installed, you need to enter following bluetooth contact tracing data manually...</b></p>
+        <p style="text-align:center"><label for="contact_tracing">How many infected persons, you have met: </label>
+        <input id="contact_tracing" type="number" name="contact_tracing" required></p>
+        <button style="padding-top:10px; padding-bottom:10px; margin-left: 35%; width: 30%; border:none; background-color: yellowgreen; margin-top:20px; margin-bottom:20px; text-size:30px" type="submit">Get results</button>        
+        {% for message in messages %}
+          <p style="background-color: grey; width:50%; padding-top:10px; padding-bottom:5px; text-align:center; margin: 0 25%">{{ message }}</p>
+        {% endfor %}
+    </form>
+</div>
+</right>
+
+</html>

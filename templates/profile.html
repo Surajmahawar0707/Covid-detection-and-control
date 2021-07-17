@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="">
+
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+li2 {
+  float: center;
+}
+
+
+li1 {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li2 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+li a:active {
+  color:black;
+    background-color: yellow;
+}
+
+li1 a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+</style>
+
+
+<ul>
+    <li><a style="background-color:yellow; color: black" class="active" href="{% url 'profile_view' %}">Profile</a></li>
+    <li><a class="active" href="{% url 'contact_after_login' %}">Contact us</a></li>
+    <li><a class="active" href="{% url 'about_after_login' %}">About us</a></li>
+    <li><a class="active" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+    <li1><a class="active" href="{% url 'logout' %}">Logout</a></li1>
+</ul>
+
+<p>Hello! You are welcome, <b>{{user.username}}</b>. You can update your profile when you want.</p>
+
+
+<div style="margin-left:25% ; text-align: center; width:50%; border: 2px solid lightgray">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button style="padding:10px 20%; width: 50%; border:none; background-color: yellowgreen; margin-top:20px; margin-bottom:20px" type="submit" value="Submit">Register</button>
+        {% for message in messages %}
+            <p style="background-color: grey; width:50%; padding-top:10px; padding-bottom:5px; text-align:center; margin: 0 25%">{{ message }}</p>
+        {% endfor %}
+    </form>
+</div>
+
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="">
+
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: blue;
+}
+
+li {
+  float: left;
+}
+
+li2 {
+  float: center;
+}
+
+
+li1 {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li1 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li2 a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 17px;
+  text-decoration: none;
+}
+
+li a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+li a:active {
+  color:black;
+    background-color: yellow;
+}
+
+li1 a:hover {
+    color:black;
+  background-color: yellow;
+}
+
+</style>
+
+
+<ul>
+    <li><a class="active" href="{% url 'profile_view' %}">Profile</a></li>
+    <li><a class="active" href="{% url 'contact_after_login' %}">Contact us</a></li>
+    <li><a class="active" href="{% url 'about_after_login' %}">About us</a></li>
+    <li><a class="active" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+    <li><a style="background-color:yellow; color: black" class="active" href="{% url 'output_view' %}">Output</a></li>
+    <li1><a class="active" href="{% url 'logout' %}">Logout</a></li1>
+</ul>
+<p style="font-style: bold; font-size: 30px">Welcome {{user.username}}</p>
+<div style="margin: 10px 10px; padding:10px 10px; border:2px solid blue">
+<p>(1) <b>Symptoms you are having: ((  {{symp}}  ))</b></p>
+<p>(2) <b>No. of Covid-19 infected users, you heve met till now: (( {{c_t}} ))</b></p>
+</div>
+<div style="padding: 10px 10px; margin: 10px 10px; border:2px solid blue">
+<p>(3) <b>Probbility of being infected: (( {{final_prob}} ))</b></p>
+<p style="color:red; font-style:italic, bold"><b> NOTE: probability is dependent over probability of other users you have met and their Infection Transition Factor.</b></p>
+<p style="color:orange; font-style:italic, bold"><b>NOTE: When you refresh the page, random values change and result may be different...</b></p>
+</div>
+<div style="padding: 10px 10px; margin: 10px 10px; border:2px solid blue">
+<p>(4) <b>You are currently on stage: (( {{curr_stage}} ))</b></p>
+<p>(5) <b>According to stage: (( {{stage_ex}} ))</b></p>
+</div>
+<div style="padding: 10px 10px; margin: 10px 10px; border:2px solid blue">
+<p>(6) <b>No. of virus infected persons in your District: (( {{district_inf}} ))</b></p>
+<p>(7) <b>No. of virus infected persons in your State: (( {{state_inf}} ))</b></p>
+<p>(8) <b>No. of virus infected persons in your Country: (( {{country_inf}} ))</b></p>
+</div>
+<div style="padding: 10px 10px; margin: 10px 10px; border:2px solid blue">
+<p>(9) <b>{{symp_tell}}</b></p>
+</div>
+<div style="padding: 10px 10px; margin: 10px 10px; border:2px solid blue">
+<p>(10) <b>Data of people, you got in touch with...</b></p>
+<p style="color:red"><b>!!!  This data is random, since it is needed to add bluetooth service in this web app  !!!</b></p>
+<p> <b> {{x}}</b></p>
+<p> <b> {{y}}</b></p>
+</div>
+</html>

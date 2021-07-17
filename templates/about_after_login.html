@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+
+<title>About Us</title>
+
+<style>
+    
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: blue;
+}
+
+li {
+    float: left;
+}
+
+li1 {
+    float: right;
+}
+
+a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 17px;
+    text-decoration: none;
+}
+
+a:hover {
+    color:black;
+    background-color: yellow;
+}
+
+
+
+
+
+</style>
+
+
+<ul>
+    <li><a href="{% url 'profile_view' %}">Profile</a></li>
+    <li><a href="{% url 'contact_after_login' %}">Contact us</a></li>
+    <li><a href="{% url 'about_after_login' %}" style="background-color: yellow; color:black">About us</a></li>
+    <li><a class="active" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+    <li1><a href="{% url 'logout' %}">Logout</a></li1>
+</ul>
+
+</html>>

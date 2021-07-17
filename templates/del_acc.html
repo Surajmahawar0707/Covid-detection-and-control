@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="">
+
+<p>Hello! You are welcome, <b>{{user.username}}</b>.</p>
+
+<div style="margin-left:25% ; width:50%; border: 2px solid lightgray">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p style="text-align:center"><label for="answer">Are you sure, you want to delete your account? if yes, please enter 'Y': </label>
+        <input id="answer" type="text" name="answer" required></p>
+        <button style="padding:10px 10px 10px 10px; margin-left: 33%; width: 34%; border:none; background-color: red; margin-top:20px; margin-bottom:20px" type="submit" value="Submit">Delete Account</button>
+        {% for message in messages %}
+            <p style="background-color: grey; width:50%; padding-top:10px; padding-bottom:5px; text-align:center; margin: 0 25%">{{ message }}</p>
+        {% endfor %}
+    </form>
+</div>
+</html>
